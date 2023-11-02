@@ -16,8 +16,9 @@ export class RestauranteDetailPage implements OnInit {
   ngOnInit() {
     this.activatedRoute.paramMap.subscribe(paramMap => {
       const recipeId= paramMap.get('restauranteID');
-      this.mirestaurante=this.restaurantesService.getRestaurante(restauranteId);
+      this.mirestaurante=this.restaurantesService.getRestaurante(recipeId);
     })
   }
+
 
 }

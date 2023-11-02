@@ -1,13 +1,38 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>restaurante-detail</ion-title>
+<ion-header >
+  <ion-toolbar color="success">
+    <ion-button slot="start">
+      <ion-back-button defaultHref="/restaurantes"></ion-back-button>
+    </ion-button>
+    <ion-title class="ion-text-center">{{mirestaurante.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">restaurante-detail</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="mirestaurante.imageURL"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-img [src]="mirestaurante.tenedores" style="height: 15vh; max-width: 15vh;"></ion-img>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-item class="ion-text-center">{{mirestaurante.descripcion}}</ion-item>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ion-list *ngIf="(mirestaurante.comentarios!=undefined)&&(mirestaurante.comentarios.length>0); else nocomments">
+          <ion-item *ngFor="let coment of mirestaurante.comentarios">{{coment}}</ion-item>
+        </ion-list>
+        <ng-template #nocomments>
+          <p class="ion-text-center"> No hay comentarios todavía....</p>
+        </ng-template>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
